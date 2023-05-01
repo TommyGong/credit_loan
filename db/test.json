@@ -1,0 +1,50 @@
+applyLoad
+{
+  "annualInterestRate": 3,
+  "applyDate": "2023-04-29T02:32:21.077Z",
+  "createDate": "2023-04-29T02:32:21.077Z",
+  "items": 12,
+  "loanAmount": 10000,
+  "loanType": "CAR",
+  "orderId": "2",
+  "updateDate": "2023-04-29T02:32:21.077Z",
+  "userId": "20230001"
+}
+
+queryLoad
+{
+  "userId": "20230001"
+}
+
+queryByOrderId
+{
+  "orderId": "1"
+}
+
+loan_product add
+{
+  "annualInterestRate": 12,
+  "createDate": "2023-04-30T08:06:59.064Z",
+  "loanMax": 100000,
+  "loanMin": 1000,
+  "productDescription": "credit loan for car.",
+  "productName": "carLoan",
+  "updateDate": "2023-04-30T08:06:59.064Z"
+}
+
+loan_product update
+{
+  "productId": "c1b9c2d9-6f79-46c4-8639-8abadf5a7122",
+  "annualInterestRate": 24,
+  "loanMax": 200000,
+  "loanMin": 1000,
+  "createDate": "2023-04-30T08:06:59.064Z",
+  "productDescription": "credit loan for car.",
+  "productName": "carLoan"
+}
+
+loan_product query
+{
+  "productId": "c1b9c2d9-6f79-46c4-8639-8abadf5a7122"
+}
+
