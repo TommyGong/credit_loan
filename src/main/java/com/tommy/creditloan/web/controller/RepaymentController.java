@@ -7,6 +7,7 @@ import com.tommy.creditloan.web.resp.CreditLoanResp;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class RepaymentController {
     @PostMapping(value = "/repay")
     public CreditLoanResp<Boolean> repay(@ApiParam(value = "loan order") @RequestBody RepaymentPlan repaymentPlan) {
         log.info("[*** User repayment, param:{} ***]", repaymentPlan);
+        if (repaymentPlan == null || repaymentPlan.getId() <= 0) {
+            return CreditLoanResp.error("repayment id cannot be null.");
+        }
         boolean repay = repayByOuterService.repay(repaymentPlan);
         if ( ! repay) {
             return CreditLoanResp.error("System internal error.");

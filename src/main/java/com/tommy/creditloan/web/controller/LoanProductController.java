@@ -6,6 +6,7 @@ import com.tommy.creditloan.web.resp.CreditLoanResp;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -41,6 +42,9 @@ public class LoanProductController {
     @PostMapping(value = "/update")
     public CreditLoanResp<String> update(@ApiParam(value = "loan product") @RequestBody LoanProduct product) {
         log.info("[*** User update loan product, param:{} ***]", product);
+        if (product == null || StringUtils.isBlank(product.getProductId())) {
+            return CreditLoanResp.error("productId cannot be null.");
+        }
         int i = loanProductService.update(product);
         if (i < 0) {
             return CreditLoanResp.error("System internal error.");
